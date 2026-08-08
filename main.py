@@ -27,9 +27,9 @@ def merge (extended, abbreviated) :
     
     
     for bateau in extended : 
-        id_bateau = bateau[0] 
-        nom = bateau[4] 
-        pays = bateau[5]
+        id_bateau    = bateau[0] 
+        nom          = bateau[4] 
+        pays         = bateau[5]
         position_ext = (bateau[1], bateau[2], bateau[3])
         
         
@@ -38,7 +38,7 @@ def merge (extended, abbreviated) :
         
         
     for bateau in abbreviated : 
-        id_bateau = bateau[0]
+        id_bateau    = bateau[0]
         position_abb = (bateau[1], bateau[2], bateau[3])
         
         
@@ -68,6 +68,53 @@ def openfolder (name_folder) :
         
         
 #=============================== MAIN =================================
+
+data_extented   = openfolder("data/marin-e1-ext.json")
+data_abreviated = openfolder("data/marin-e1-abb.json")
+
+dict_extented = index(data_extented)
+dict_abreviated = index(data_abreviated)
+
+# I . MISSION 1
+
+#1.le nombre total de bateaux dans extented 
+print("le nombre total de bateau dans extented est : ", len(dict_extented))
+
+#2.le nombre total de bateaux dans abreviated 
+print("le nombre total de bateau dans abreviated est : ", len(dict_abreviated))
+
+#3. les premiers bateaux de chaque un 
+print("le premier bateau de extented est : ", data_extented[0])
+print("le premier bateau de abreviated est : ", data_abreviated[0])
+
+#4. afficher tout les noms des colonnes 
+colonne_abreviated = []
+for nom_colonne in dict_abreviated.keys() :  #<- cost : O(n)
+    colonne_abreviated.append(nom_colonne)   
+print("la colonnes de abreviated est : ",colonne_abreviated)
+
+colonne_extented = []
+for nom_colonne in dict_extented.keys() : #<- cost : O(n)
+    colonne_extented.append(nom_colonne)
+print("la colonne de extented est : ",colonne_extented)
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
         
             

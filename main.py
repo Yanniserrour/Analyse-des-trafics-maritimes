@@ -1,5 +1,6 @@
 #====================== IMPORT TIME ======================
 import json
+from collections import defaultdict
 
 
 
@@ -69,8 +70,8 @@ def openfolder (name_folder) :
         
 #=============================== MAIN =================================
 
-data_extented   = openfolder("data/marin-e1-ext.json")
-data_abreviated = openfolder("data/marin-e1-abb.json")
+data_extented   = openfolder("./data/marin-e1-ext.json")
+data_abreviated = openfolder("./data/marin-e1-abb.json")
 
 dict_extented = index(data_extented)
 dict_abreviated = index(data_abreviated)
@@ -78,26 +79,67 @@ dict_abreviated = index(data_abreviated)
 # I . MISSION 1
 
 #1.le nombre total de bateaux dans extented 
+print("\n")
 print("le nombre total de bateau dans extented est : ", len(dict_extented))
 
 #2.le nombre total de bateaux dans abreviated 
+print("\n")
 print("le nombre total de bateau dans abreviated est : ", len(dict_abreviated))
 
 #3. les premiers bateaux de chaque un 
+print("\n")
 print("le premier bateau de extented est : ", data_extented[0])
+print("\n")
 print("le premier bateau de abreviated est : ", data_abreviated[0])
 
-#4. afficher tout les noms des colonnes 
-colonne_abreviated = []
-for nom_colonne in dict_abreviated.keys() :  #<- cost : O(n)
-    colonne_abreviated.append(nom_colonne)   
-print("la colonnes de abreviated est : ",colonne_abreviated)
+#4. afficher touts les colonnes différents pour ext et abb 
 
-colonne_extented = []
-for nom_colonne in dict_extented.keys() : #<- cost : O(n)
-    colonne_extented.append(nom_colonne)
-print("la colonne de extented est : ",colonne_extented)
 
+
+
+# II. MISSION 2 
+
+#1. compter le nombre de pays différents 
+pays = defaultdict(int)
+for bateau in data_extented :
+    pays[bateau[5]] +=1
+print("les pays differents sont : ")
+for p in pays.keys(): 
+    print(p, end=',')
+print("\n")
+    
+#2. torouver les pays avec le plus de bateaux
+pays_items = pays.items()
+
+maxi = 0
+big_pays = ""
+for p,q in pays_items : 
+    if q> maxi : 
+        maxi = q
+        big_pays = p
+print("le pays avec le plus de bateaux est : ", big_pays, " avec ", maxi, " bateaux")
+
+big_pays, maxi = max(pays.items(), key = lambda x: x[1]) #<- retourne un tuple 
+# et celui de la plus grande valeurs car le "pays.items()" returne une liste de tuple 
+# et nous on s'interesse au nombre de ce tuple d'ou le "x[1]"
+
+#3. compter les bateaux qui ont un nom
+nombre_bateaux_nome = 0
+for bateau in data_extented :
+    if bateau [4]: 
+        nombre_bateaux_nome += 1        
+print("le nombre de bateaux qui ont un nom est : ", nombre_bateaux_nome)
+
+   
+
+        
+
+
+    
+    
+    
+    
+    
 
 
 

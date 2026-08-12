@@ -131,6 +131,102 @@ for bateau in data_extented :
 print("le nombre de bateaux qui ont un nom est : ", nombre_bateaux_nome)
 
    
+#4. trouver le nom de bateau le plus long 
+big_nom      = ""
+longueur_max = 0 
+for bateau in data_extented : 
+    nom = bateau[4]
+    if nom and len(nom) > longueur_max : 
+        big_nom = nom
+        longueur_max = len(nom)
+  
+if big_nom :       
+    print("le nom du bateau le plus long est : ", big_nom  ," avec ", longueur_max, "caracteres")
+else: 
+    print("aucun bateau a de nom") 
+    
+    
+# II. MISSION 3
+
+# 1. le bateau le plus au nord 
+
+bateau_nord = data_extented[0]
+
+for bateau in data_extented : 
+    if bateau[1] > bateau_nord[1] : 
+        bateau_nord = bateau
+        
+print("=== BATEAU LE PLUS AU NORD ===")
+print(f"Nom : {bateau_nord[4]}")
+print(f"ID : {bateau_nord[0]}")
+print(f"Latitude : {bateau_nord[1]}°")
+print(f"Longitude : {bateau_nord[2]}°")
+print(f"Date : {bateau_nord[3]}")
+print(f"Pays : {bateau_nord[5]}")
+print()
+
+
+#2. le bateau le plus au sud 
+bateau_nord = data_extented[0]
+
+for bateau in data_extented : 
+    if bateau[1] < bateau_nord[1] : 
+        bateau_nord = bateau
+        
+print("=== BATEAU LE PLUS AU NORD ===")
+print(f"Nom : {bateau_nord[4]}")
+print(f"ID : {bateau_nord[0]}")
+print(f"Latitude : {bateau_nord[1]}°")
+print(f"Longitude : {bateau_nord[2]}°")
+print(f"Date : {bateau_nord[3]}")
+print(f"Pays : {bateau_nord[5]}")
+print()
+
+
+#3. le plus a l'est 
+bateau_nord = data_extented[0]
+
+for bateau in data_extented : 
+    if bateau[2] > bateau_nord[2] : 
+        bateau_nord = bateau
+        
+print("=== BATEAU LE PLUS AU NORD ===")
+print(f"Nom : {bateau_nord[4]}")
+print(f"ID : {bateau_nord[0]}")
+print(f"Latitude : {bateau_nord[1]}°")
+print(f"Longitude : {bateau_nord[2]}°")
+print(f"Date : {bateau_nord[3]}")
+print(f"Pays : {bateau_nord[5]}")
+print()
+
+
+#4. le plus a l'ouest
+bateau_nord = data_extented[0]
+
+for bateau in data_extented : 
+    if bateau[2] < bateau_nord[2] : 
+        bateau_nord = bateau
+        
+print("=== BATEAU LE PLUS AU NORD ===")
+print(f"Nom : {bateau_nord[4]}")
+print(f"ID : {bateau_nord[0]}")
+print(f"Latitude : {bateau_nord[1]}°")
+print(f"Longitude : {bateau_nord[2]}°")
+print(f"Date : {bateau_nord[3]}")
+print(f"Pays : {bateau_nord[5]}")
+print()
+
+
+
+
+
+
+    
+
+
+
+
+    
 
         
 

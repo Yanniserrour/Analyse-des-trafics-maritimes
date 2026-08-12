@@ -146,7 +146,7 @@ else:
     print("aucun bateau a de nom") 
     
     
-# II. MISSION 3
+# III. MISSION 3
 
 # 1. le bateau le plus au nord 
 
@@ -218,45 +218,60 @@ print()
 
 
 
+# IV. MISSION 4
 
+#1. la date la plus ancienne 
+bateau_date_ancienne = data_extented[0]
 
-
+for bateau in data_extented : 
+    if bateau[3] < bateau_date_ancienne[3] : 
+        bateau_date_ancienne = bateau
     
+print("la date la plus ancienne est: ", bateau_date_ancienne[3], "nom du bateau : ", bateau_date_ancienne[4])
 
+#2. la date la plus recente 
+bateau_date_recente = data_extented[0]
 
-
-
+for bateau in data_extented : 
+    if bateau[3] > bateau_date_recente[3] : 
+        bateau_date_recente = bateau
     
+print("la date la plus ancienne est: ",bateau_date_recente[3], "nom du bateau : ", bateau_date_recente[4])
 
-        
+#3. le nombre d'observation par heurs
+heurs = {}
 
+for bateau in data_extented : 
+    dateheur = bateau[3]
+    heur     = int(dateheur[11:13])
+    heurs[heur] = heurs.get(heur, 0) + 1
+    
+print(10*"=","OBSERVATION PAR HEURS", 10*"=")
+for cle in sorted(heurs.keys()) : 
+    print("l'heur ", cle , " est observer : ", heurs[cle])
+print(20*"=")
 
+#4. l'heur qui a était observer le plus 
+if heurs:
+    heure_max = max(heurs, key=heurs.get)
+    print(f"\nHeure la plus active : {heure_max}h ({heurs[heure_max]} observations)")
     
     
+#V. MISSION 5
+"""
+Fusionner les données avec merge()
+
+Extraire les positions (tuples) pour chaque bateau
+
+Calculer la distance entre les deux positions
+
+Stocker les distances dans un dictionnaire
+
+Trouver le bateau avec la plus grande distance
+
+Trouver le bateau avec la plus petite distance
+
+Afficher les résultats avec tous les détails
+"""
     
     
-    
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-        
-        
-        
-        

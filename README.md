@@ -12,17 +12,6 @@ Ce projet analyse des données de positionnement de bateaux issues de l'API Mari
 
 ---
 
-## 📁 Structure du projet
-projet/
-├── data/
-│ ├── marine-e1-ext.json # Données étendues
-│ └── marine-e1-abb.json # Données abrégées
-├── main.py # Code principal
-└── README.md # Ce fichier
-
-
----
-
 ## 🛠️ Technologies utilisées
 
 - **Python 3**

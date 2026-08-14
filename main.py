@@ -1,6 +1,7 @@
 #====================== IMPORT TIME ======================
 import json
 from collections import defaultdict
+import math 
 
 
 
@@ -21,7 +22,9 @@ def index (extended) :
 
 
 def merge (extended, abbreviated) : 
-    """fusionner les données des deux fichier pour les bateau en commun"""
+    """fusionner les données des deux fichier pour les bateau en commun
+    resultat : {clé : [nom, pays, (P1,P2,P3), (P1,P2,P3)/None]}
+    """
     
     
     result = {}
@@ -32,8 +35,6 @@ def merge (extended, abbreviated) :
         nom          = bateau[4] 
         pays         = bateau[5]
         position_ext = (bateau[1], bateau[2], bateau[3])
-        
-        
         result[id_bateau] = [nom , pays, position_ext, None]
         
         
@@ -273,5 +274,61 @@ Trouver le bateau avec la plus petite distance
 
 Afficher les résultats avec tous les détails
 """
+# 1. fusionner les données 
+dict_merged = merge(data_extented, data_abreviated)
+
+#2. extraire la position pour chaque bateau 
+positions  = {} # {clé : [(P,P,H),(P,P,H)]}
+for cle, liste in dict_merged.items() :
+    positions[cle] = [liste[2], liste[3]]
+
+#3. calculer la distance entre les deux positions 
+distances= {}
+for cle, liste in positions.items() : 
+    pos1 = liste[0]
+    pos2 = liste[1]
+    
+    lat1, long1, date1 = pos1
+    lat2, long2, date2 = pos2
+    
+    dif_lat = lat1 - lat2
+    dif_long= long1 -long2
+
+    carre_lat = dif_lat**2
+    carre_long= dif_long ** 2
+    
+    somme = carre_lat + carre_long
+
+    distance = math.sqrt(somme)
+    
+    #ajouter au dictionnaire 
+    distances[cle] = {
+        'nom' : dict_merged[cle][0],
+        'pays': dict_merged[cle][1],
+        'pos1': pos1,
+        'pos2': pos2,
+        'distance' : distance
+        
+    }
+    
+#4. trouver les bateau avec la plus grandes et la plus petite distances 
+distance_max  = max(distances, key=distances.get)
+print("la plus grandes distances est : ", distance_max)
+
+distance_min =min(distances, key=distances.get)
+print("la plus petite distances est : ",distance_min)
+
+
+
+
+
     
     
+    
+    
+
+    
+    
+    
+
+        
